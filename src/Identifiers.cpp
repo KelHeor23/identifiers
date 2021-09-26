@@ -7,6 +7,7 @@ std::string Identifiers::nextIdent(std::string strIdent)
     auto it = strIdent.end() - 2;
     std::string result;
     result.reserve(strIdent.length());
+
     if (changeIdent(it_begin, it, result) == 1)
     {
         if (result.size() + 3 > MAX_COUNT_GROUPS * 2 + MAX_COUNT_GROUPS - 1)
@@ -17,9 +18,9 @@ std::string Identifiers::nextIdent(std::string strIdent)
     return result;
 }
 
-int Identifiers::changeIdent(std::string::iterator it_begin, std::string::iterator it, std::string &result)
+bool Identifiers::changeIdent(std::string::iterator it_begin, std::string::iterator it, std::string &result)
 {
-    static int fullChange = 0; //whether the identifier has moved to the next digit
+    static bool fullChange = 0; //whether the identifier has moved to the next digit
     if (*(it + 1) != '9') //digit increment
     {
         if (it != it_begin)

@@ -12,7 +12,7 @@ const std::set<char> expt {'D', 'F', 'G', 'J', 'M', 'Q', 'V'};
 class Identifiers {
 private:
     //recursive method handling identifiers
-    static int changeIdent(std::string::iterator, std::string::iterator, std::string&);
+    static bool changeIdent(std::string::iterator, std::string::iterator, std::string&);
     //get next valid character
     static char getNextSymbol(char);
     //copies an immutable identifier
