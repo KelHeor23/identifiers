@@ -4,6 +4,8 @@
 #ifndef IDENTIFIERS_IDENTIFIERS_H
 #define IDENTIFIERS_IDENTIFIERS_H
 
+#define MAX_COUNT_GROUPS 10
+
 //black list symbols
 const std::set<char> expt {'D', 'F', 'G', 'J', 'M', 'Q', 'V'};
 

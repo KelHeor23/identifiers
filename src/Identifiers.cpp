@@ -9,6 +9,8 @@ std::string Identifiers::nextIdent(std::string strIdent)
     result.reserve(strIdent.length());
     if (changeIdent(it_begin, it, result) == 1)
     {
+        if (result.size() + 3 > MAX_COUNT_GROUPS * 2 + MAX_COUNT_GROUPS - 1)
+            throw std::exception("Too much groups");
         result.reserve(strIdent.length() + 3);
         result.append("-A1");
     }
