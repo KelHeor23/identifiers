@@ -11,7 +11,7 @@ std::string Identifiers::nextIdent(std::string strIdent)
     if (changeIdent(it_begin, it, result) == 1)
     {
         if (result.size() + 3 > MAX_COUNT_GROUPS * 2 + MAX_COUNT_GROUPS - 1)
-            throw std::exception("Too much groups");
+            throw std::runtime_error("Too much groups");
         result.reserve(strIdent.length() + 3);
         result.append("-A1");
     }
@@ -50,7 +50,7 @@ bool Identifiers::changeIdent(std::string::iterator it_begin, std::string::itera
         }
     }
     else
-        throw std::exception("Format error");
+        throw std::runtime_error("Format error");
     return fullChange;
 }
 
@@ -74,18 +74,18 @@ bool Identifiers::checkFormat(std::string& str)
     int position = 1;
 
     if (!(*(str.end() - 1) >= '1' && *(str.end() - 1) <= '9'))
-        throw std::exception("Invalid last characters");
+        throw std::runtime_error("Invalid last characters");
 
     for (auto it = str.begin(); it < str.end(); it++)
     {
         if(position % 3 == 1 && !(*it >= 'A' && *it <= 'Z'))
-            throw std::exception("Format error");
+            throw std::runtime_error("Format error");
         else if (expt.find(*it) != expt.end())
-            throw std::exception("Invalid characters used");
+            throw std::runtime_error("Invalid characters used");
         else if (position % 3 == 2 && !(*it >= '1' && *it <= '9'))
-            throw std::exception("Format error");
+            throw std::runtime_error("Format error");
         else if (position % 3 == 0 && *it != '-')
-            throw std::exception("Format error");
+            throw std::runtime_error("Format error");
         position++;
     }
     return true;
